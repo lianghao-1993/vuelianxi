@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //解构赋值
+        // const arr = [1, 2, 3]
+        // const obj = {
+        //     name: '张三',
+        //     age: 109
+        // }
+        //对象和数组解构赋值  默认值、对象重新命名
+        // let [a, b, c, d = 10] = arr;
+        // const { name, age: gg, sex = 0 } = obj
+
+        //数组交换位置
+        // let [a, b] = [b, a]
+
+
+
+        //字符串
+        //字符串模板  花括号内部可以进行三元运算
+        // const s = `我的名字叫${obj.name},我的年龄${obj.age < 100 ? obj.age : 200}`;
+
+
+        //异步编程的几种方法
+        //    1、 回调函数    嵌套深，不容易阅读
+        //    2、 jquery的事件监听
+        // f1.on('done', f2)
+        // function f1() {
+        //     setTimeout(function () {
+        //         //处理返回的数据
+        //         f.trigger('done')
+        //     }, 500)
+        // }
+        // 3、Jquery发布订阅模式
+        // Jquery.subscribe('done', f2)
+        // function f1() {
+        //     setTimeout(function () {
+        //         //处理返回的数据
+        //         Jquery.publish('done')
+        //     }, 500)
+        // }
+
+
+        // 4、promise
+        // p = new Promise((resolve,reject) => {})
+        // p = Promise.resolve()
+        // p = Promise.reject()
+        // P = Promise.all([p1,p2,p3])  必须确保都是成功状态
+        // p = Promise.race([p1,p2,p3])  只要有成功就返回
+        // const prosime = new Promise(function (resolve, reject) {
+        //     setTimeout(function () {
+        //         if (true) {
+        //             resolve('11111')
+        //         } else {
+        //             reject('错误')
+        //         }
+        //     }, 1000)
+        // })
+
+
+        // prosime.then((res) => {
+        //     console.log(res)
+        //     return new Promise((resolve,regect) => {
+        //         setTimeout(() => {
+        //             resolve('222')
+        //         },1000)
+        //     })
+        // }, (err) => {
+        //     console.log(err)
+        // }).then((res) => {
+        //     console.log(res)
+        // })
+
+        //generator Generator
+        // function* show() {
+        //     yield '111111';
+        //     yield '222222';
+        //     yield '333333';
+        //     return '444'
+        // }
+
+        // const gen = show();
+
+        // for (val of gen) {
+        //     console.log(val)
+        // }
+
+        // let [gen1, gen2, gen3] = show()
+        // console.log(...show())
+
+
+
+        //async    前面有一个await 后面代码不会执行     try{}catch(err){}    不影响其他代码
+        // function send(str) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(function () {
+        //             if (str) {
+        //                 resolve(str)
+        //             } else {
+        //                 reject('出错了' + str)
+        //             }
+        //         }, 1000)
+        //     })
+
+        // }
+
+
+        // async function text() {
+        //     try {
+        //         var info = await send(1);
+        //         var info2 = await send(info + '*' + '22222');
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        //     console.log(info2)
+        // }
+
+        // text()
+
+
+        //symbol   用for..in  遍历出来，可以作为私有的Key
+        // const symbol = Symbol('name')
+        // const info = {
+        //     [symbol]: '张三'
+        // }
+
+        //箭头函数 函数默认参数 剩余参数   
+
+        // function getUserInfo(a,b) {
+        // let aa = a || '默认';
+        // }
+
+        //参数默认值
+        // function getUserInfo(a = '111', b = '222') {
+
+        // }
+
+        //参数解构赋值
+        // function getUserInfo({name,age=100}) {
+
+        // }
+
+        //函数参数reset   ...既可以展开，在函数也可以收回来
+        // function gitDate(a, b, ...c) {
+        //     console.log(a, b, c)
+        // }
+        // gitDate(1, 2, 3, 4, 5)
+
+        //复制参数
+        // const arr1 = [...arr]
+
+        //箭头函数  
+        //箭头函数的this是定义它时候的那个this
+        //箭头函数没有arguments，可以用...解构出来
+        //箭头函数不能当构造函数
+
+        //模块化
+        // <script type='module'><script>
+        // import {name,age} from './data.js'     js文件 export const a = 10
+        // module.js的内容更改了，import的数据也会改
+        // import {num,str} from './module.js';
+        // console.log(num,str)
+
+        // class类 static直接用构造函数类调用  static可以被子类继承，子类通过构造函数直接调用，
+        //  static里的this指向构造函数类，静态方法只占用内存的一块空间，实例方法每次实例都会占用一块空间
+        //节省内存占用空间，静态方法一般用于和数据没有和类里面的数据绑定的场景,es2022有了静态属性,属性
+        //前面加# #num  = 10
+        //super在子类constructor中进行函数调用，指向的是父类的构造函数，在方法中调用super,指向的是
+        //父类的原型对象，this指向的是子类的实例
+        class P {
+            constructor(name, age) {
+                Object.assign(this, {
+                    name,
+                    age
+                })
+            }
+            getName() {
+                alert(this.name)
+            }
+            getAge() {
+                alert(this.age)
+            }
+            static info() {
+                console.log(this)
+            }
+        }
+
+        class C extends P {
+            constructor(name, age) {
+                super(name, age)
+            }
+        }
+        const c = new C('张三', 33);
+        C.info()
+    </script>
+
+</body>
+
+</html>

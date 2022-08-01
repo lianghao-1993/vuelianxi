@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid red;
+
+        }
+
+        span {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: block;
+            float: left;
+        }
+
+        .clear:after {
+            content: '';
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            /* zoom:1; */
+        }
+    </style>
+</head>`
+
+<body>
+    <div class="box clear">
+        <span></span>
+        <span></span>
+        <!-- <div style="clear:both;"></div> -->
+    </div>
+    <script>
+        //清除浮动
+        // 给父元素加高    
+
+        // <div style="clear:both;"></div>
+
+        //  .clear:after {
+        //     content: '';
+        //     display: block;
+        //     height: 0;
+        //     clear: both;
+        //     visibility:hidden;
+        // }
+
+        //父级div定义 overflow:hidden
+    </script>
+</body>
+
+</html>

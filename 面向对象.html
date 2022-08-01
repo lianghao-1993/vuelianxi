@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //原型式继承   无法给父类传参，子类修改引用类型数据，父类也修改
+        // function Parent(name,age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.arr = [1, 2, 3, 5]
+        // }
+        // Parent.prototype.getName = function () {
+        //     alert(this.name)
+        // }
+
+        // function Child(sex) {
+        //     this.sex = sex;
+        // }
+        // Child.prototype = new Parent();
+        // const child = new Child('男');
+        // child.arr.push('2222')
+        // console.log(child.arr)
+
+
+        //借用构造函数继承 call apply   不是真正意义上的继承，不能继承父类原型上的方法
+        // function Parent(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.arr = [1, 2, 3, 5]
+        // }
+        // Parent.prototype.getName = function () {
+        //     alert(this.name)
+        // }
+        // function Child(sex, name, age) {
+        //     this.sex = sex;
+        //     Parent.call(this, name, age)
+        // }
+        // const parent = new Parent()
+        // const child = new Child('男', '张三', 999)
+        // console.log(child)
+
+
+        //借用构造函数加原型式组合继承   解决了传参和子类可以继承原型的缺点，但是父类函数调用两次
+        //子类原型添加父类原型和call
+        //     function Parent(name, age) {
+        //         this.name = name;
+        //         this.age = age;
+        //         this.arr = [1, 2, 3, 5]
+        //     }
+        //     Parent.prototype.getName = function () {
+        //         alert(this.name);
+        //     }
+        //     function Child(sex, name, age) {
+        //         this.sex = sex;
+        //         Parent.apply(this, [name, age])
+        //     }
+        //     Child.prototype = new Parent();
+        //     Child.prototype.constructor = Child
+        //     const parent = new Parent('李四', 77);
+        //     const child = new Child('男', '张三', 999);
+        //     console.log(Child.prototype.constructor)
+
+
+        //完美继承
+        // function Parent(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.arr = [1, 2, 3, 5]
+        // }
+        // Parent.prototype.getName = function () {
+        //     alert(this.name);
+        // }
+        // function Child(sex, name, age) {
+        //     this.sex = sex;
+        //     Parent.apply(this, [name, age])
+        // }
+        // Child.prototype = Object.create(Parent.prototype)
+        // Child.prototype.constructor = Child
+        // const parent = new Parent('李四', 77);
+        // const child = new Child('男', '张三', 999);
+        // console.log(child)
+
+
+        // es6继承
+        // class Parent {
+        //     constructor(name,age){
+        //         Object.assign(this,{
+        //             name,
+        //             age
+        //         })
+        //     }
+        // }
+
+        // class Child extends Parent{
+        //     constructor(name,age){
+        //         super(name,age)
+        //     }
+        // }
+
+        // const child = new Child('张飒安',99);
+
+        // console.log(child)
+    </script>
+</body>
+
+</html>
